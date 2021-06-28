@@ -1,8 +1,7 @@
 #!/bin/bash
 #INPUT : ABSOLUTE PATH FOR A FILE TO CREATE
 function createtouch() {
-    echo "NUMBER OF ARGS :"$#
-    [[ "${1}" ]] || echo "Function createtouch : Missing file path";
+    [[ "${1}" ]] ||(echo "Function createtouch : Missing file path" && return);
     mkdir -p "$(dirname "$1")" && touch ${1}
     echo ${1}
 }
@@ -11,7 +10,7 @@ function createtouch() {
 #module.install
 #module.links.menu.yml etc...
 function drupalmoduleFiles() {
-    [[ "{1}" ]] || echo "Function drupalmoduleFiles: Missing module name!";
+    [[ "{1}" ]] || (echo "Function drupalmoduleFiles: Missing module name!" && return);
     files=("README.md" ".info.yml" ".install" ".links.menu.yml" ".module" ".permissions.yml" ".routing.yml")
     echo "Start creating the basic files for the module..."
     for keys in "${!files[@]}"; do
@@ -25,7 +24,7 @@ echo "Function drupalmoduleFiles: Main files for Drupal module have been created
 }
 #SET UP THE COMPONENTS FOR A CUSTOM MODULE
 function setupModule() {
-    [[ "${1}" ]] || echo "Function setupModule : You are missing a module name."return;
+    [[ "${1}" ]] ||(echo "Function setupModule : You are missing a module name." && return);
     moduleName=${1};
     echo "Chosen module name : " $moduleName
     echo "Module settings :"
@@ -41,7 +40,7 @@ function setupModule() {
 }
 #CREATE ALL THE SUBFOLDERS AND FILES WITHIN THE ROOT FOLDER MODULE
 function createFolders() {
-	[[ "${1}" ]] || echo "Function createFolders: You are missing a module name."
+	[[ "${1}" ]] ||(echo "Function createFolders: You are missing a module name." && return);
 	mod_name=${1}
 	mod_name=${mod_name,,}
 	drupalmoduleFiles ${mod_name} #to lowercase
