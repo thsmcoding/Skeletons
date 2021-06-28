@@ -1,12 +1,11 @@
 #!/bin/bash
 function createtouch() {
     echo "NUMBER OF ARGS :"$#
-    [[ "${1}" ]] || echo "Function createtouch : Missing file path";
+    [[ "${1}" ]] || ( echo "Function createtouch : Missing file path" && return );
     mkdir -p "$(dirname "$1")" && touch ${1}
-    echo ${1}
 }
 function drupalmoduleFiles() {
-    [[ "{1}" ]] || echo "Function drupalmoduleFiles: Missing module name!";
+    [[ "{1}" ]] || (echo "Function drupalmoduleFiles: Missing module name!" && return);
     files=("README.md" ".info.yml" ".install" ".links.menu.yml" ".module" ".permissions.yml" ".routing.yml")
     echo "Start creating the basic files for the module..."
     for keys in "${!files[@]}"; do
@@ -19,7 +18,7 @@ function drupalmoduleFiles() {
 echo "Function drupalmoduleFiles: Main files for Drupal module have been created. Completed.";
 }
 function setupModule() {
-    [[ "${1}" ]] || echo "Function setupModule : You are missing a module name."return;
+    [[ "${1}" ]] ||(echo "Function setupModule : You are missing a module name." && return);
     moduleName=${1};
     echo "Chosen module name : " $moduleName
     echo "Module settings :"
@@ -34,7 +33,7 @@ function setupModule() {
     fi
 }
 function createFolders() {
-	[[ "${1}" ]] || echo "Function createFolders: You are missing a module name."
+	[[ "${1}" ]] || (echo "Function createFolders: You are missing a module name." && return);
 	mod_name=${1}
 	mod_name=${mod_name,,}
 	drupalmoduleFiles ${mod_name} 
