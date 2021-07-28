@@ -1,9 +1,9 @@
 #!bin/bash
-function dumpdb() {
+dumpdb() {
     if [[ !$(which ddev &> /dev/null) ]]; then
 	echo 'The ddev command works. DDEV is already installed';
 	ddev list &> 'ddev.txt' && awk '!NF{f=0} /NAME/ {f=1} f' ddev.txt 
-	rm ddev.text
+	rm ddev.txt
 	echo "\n"
 	echo "Make sure current location is same as a project name!";
 	echo 'Current location is '${pwd}
