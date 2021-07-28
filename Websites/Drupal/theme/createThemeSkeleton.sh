@@ -1,5 +1,5 @@
 #!bin/bash
-function createfiles() {
+createfiles() {
     [[ "$#" -gt 2 ]] || (echo "Function createfiles : missing args"  && return);
     themename=${1};shift;filenames=("$@")
     for f in "${!filenames[@]}"; do
@@ -12,7 +12,7 @@ function createfiles() {
     done
     echo "Function createfiles : File creation completed";
 }
-function createfolders() {
+createfolders() {
     [[ $# -gt 1 ]] || (echo "function createfolders : Missing args " && return);
     local folders=("$@")
     for folder in "${folders[@]}"; do
@@ -27,7 +27,7 @@ function createfolders() {
     done
     echo "function createfolders : Folder structure creation completed! "
 }
-function setuptheme() {
+setuptheme() {
     read -p "Please enter your theme name: " theme
     echo "Your theme's name is :"${theme}
     files=("theme-settings.php" ".theme" ".libraries.yml" ".info.yml" ".breakpoints.yml");
