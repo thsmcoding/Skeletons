@@ -1,10 +1,10 @@
 #!/bin/bash
-function createtouch() {
+createtouch() {
     echo "NUMBER OF ARGS :"$#
     [[ "${1}" ]] || ( echo "Function createtouch : Missing file path" && return );
     mkdir -p "$(dirname "$1")" && touch ${1}
 }
-function drupalmoduleFiles() {
+drupalmoduleFiles() {
     [[ "{1}" ]] || (echo "Function drupalmoduleFiles: Missing module name!" && return);
     files=("README.md" ".info.yml" ".install" ".links.menu.yml" ".module" ".permissions.yml" ".routing.yml")
     echo "Start creating the basic files for the module..."
@@ -17,7 +17,7 @@ function drupalmoduleFiles() {
     done
 echo "Function drupalmoduleFiles: Main files for Drupal module have been created. Completed.";
 }
-function setupModule() {
+setupModule() {
     [[ "${1}" ]] ||(echo "Function setupModule : You are missing a module name." && return);
     moduleName=${1};
     echo "Chosen module name : " $moduleName
@@ -32,7 +32,7 @@ function setupModule() {
 	buildfolderMod $mod_path $moduleName
     fi
 }
-function createFolders() {
+createFolders() {
 	[[ "${1}" ]] || (echo "Function createFolders: You are missing a module name." && return);
 	mod_name=${1}
 	mod_name=${mod_name,,}
@@ -59,7 +59,7 @@ function createFolders() {
 	done
 }
 #CREATE THE MAIN MODULE FOLDER STRUCTURE 
-function buildfolderMod() {
+buildfolderMod() {
     if [[ $# -eq 1 ]] ; then
 	echo "Function buildfolderMod: Starting to build module structure with module name as the only arg."
 	createFolders ${1}
