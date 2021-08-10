@@ -32,8 +32,8 @@ setupModule() {
 	buildfolderMod $mod_path $moduleName
     fi
 }
-createFolders() {
-	[[ "${1}" ]] || (echo "Function createFolders: You are missing a module name." && return);
+createmodfolders() {
+	[[ "${1}" ]] || (echo "Function createmodfolders: You are missing a module name." && return);
 	mod_name=${1}
 	mod_name=${mod_name,,}
 	drupalmoduleFiles ${mod_name} 
@@ -62,11 +62,11 @@ createFolders() {
 buildfolderMod() {
     if [[ $# -eq 1 ]] ; then
 	echo "Function buildfolderMod: Starting to build module structure with module name as the only arg."
-	createFolders ${1}
+	createmodfolders ${1}
     else
 	cd ${1}
 	mkdir ${2} && cd ${2}
-	createFolders ${2}
+	createmodfolders ${2}
     fi
     cd ..
 }
