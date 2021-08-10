@@ -1,0 +1,3 @@
+setuptheme:sets up a folder for a theme in a Drupal project. Folder contains all the configuration and other necessary files
+createfolders: For a Drupal project, creates the subdirectories config, install within the theme directory
+createfiles: sets up empty files with correct names for a Drupal theme.

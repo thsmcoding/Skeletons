@@ -1,0 +1,9 @@
+#THIS IS THE DOCUMENATION FOR ALL ALIASES AND FUNCTIONS THAT I ADDED IN MY ENVIRONMENT
+setuptheme:sets up a folder for a theme in a Drupal project. Folder contains all the configuration and other necessary files
+createfolders: For a Drupal project, creates the subdirectories config, install within the theme directory
+createfiles: sets up empty files with correct names for a Drupal theme.
+dumpdb: dumps last version of a Drupal website in current project. DDEV env should be installed. 
+createtouch: recursively creates a directory from its absolute path. Last component should be the filename. 
+drupalmoduleFiles:creates empty files with correct names in a module directory for a Drupal project.
+setupModule: sets up a folder for a module in a Drupal project. Folder contains all the configuration and other necessary files
+createmodfolders: sets up the necessary subdirectories for a Drupal module to work.
